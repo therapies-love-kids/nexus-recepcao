@@ -13,8 +13,8 @@ export default function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-base-300">
-      <div className="card bg-base-100 w-4/5 h-4/5">
+    <div className="flex justify-center items-center h-screen bg-primary">
+      <div className="card bg-base-100 size-5/6">
         <div className="card-body flex justify-center items-center gap-4">
 
           {/* Logo */}
