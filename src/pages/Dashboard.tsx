@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router";
 import PacienteService from "../utils/PacienteService";
-import { FaArrowRight } from "react-icons/fa6";
 
 export default function Dashboard() {
   const [showInactive, setShowInactive] = useState(false);
@@ -39,9 +38,12 @@ export default function Dashboard() {
               <li><a className="justify-center">Contratos</a></li>
             </ul>
             <div className="flex flex-row items-center w-full h-min pb-3 text-sm">
-              <p>Recepcionista</p>
-              <Link to="/" className="btn btn-ghost btn-xs text-error flex items-center gap-1">
-                <FaArrowRight />
+              <div className="flex flex-col w-full">
+                <p>Recepcionista</p>
+                <p className="text-xs text-neutral-content">recepcionista@nexus.com.br</p>
+              </div>
+              <Link to="/" className="btn btn-ghost btn-xs text-error flex items-center">
+                {/* <FaArrowRight /> */}
                 Sair
               </Link>
             </div>
@@ -52,7 +54,7 @@ export default function Dashboard() {
 
             {/* Filtros */}
 
-            <div>
+            <div className="flex flex-col gap-1">
               <div className="flex flex-row gap-2">
                 <select className="select select-bordered w-1/4 max-w-xs">
                   <option disabled selected>Filtrar por</option>
@@ -82,7 +84,7 @@ export default function Dashboard() {
             {/* Tabela */}
 
             {pacientes.length > 0 && (
-              <div className="overflow-x-auto rounded-box">
+              <div className="overflow-x-auto rounded-lg border-base-300 border-2">
                 <table className="table table-zebra table-sm">
                   <thead className="sticky top-0">
                     <tr className="bg-base-300">
