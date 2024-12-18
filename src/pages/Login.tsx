@@ -14,54 +14,57 @@ export default function Login() {
 
   return (
     <div className="flex justify-center items-center h-screen bg-primary">
-      <div className="card bg-base-100 size-5/6">
-        <div className="card-body flex justify-center items-center gap-4">
+      <div className="card bg-base-100 size-11/12">
+        <div className="card-body flex justify-center items-center gap-6">
 
           {/* Logo */}
 
           <img src="/svg/nexus-logo-dark.svg" alt="Nexus" className="w-36" />
 
-          {/* Formulário */}
-          
-          <form className="flex flex-col gap-4 items-center" onSubmit={handleSubmit}>
-            <label className="input input-bordered flex items-center gap-2 w-full">
-              <FaAt className="text-neutral-content" />
+          {/* FORMULÁRIO */}
+
+          {/* E-mail */}
+
+          <form className="flex flex-col gap-4 items-center w-1/4" onSubmit={handleSubmit}>
+            <label className="input input-bordered flex items-center gap-2 w-full text-sm">
+              <FaAt />
               <input
                 type="email"
                 className="grow"
                 placeholder="E-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                // required
+              // required
               />
             </label>
-            <label className="input input-bordered flex items-center gap-2 w-full">
-              <FaKey className="text-neutral-content" />
+
+            {/* Senha */}
+
+            <label className="input input-bordered flex items-center gap-2 w-full text-sm">
+              <FaKey />
               <input
                 type="password"
                 className="grow"
                 placeholder="Senha"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                // required
+              // required
               />
             </label>
             <button
               type="submit"
-              className="btn btn-primary w-1/3"
+              className="btn btn-primary"
             >
               Entrar
             </button>
           </form>
 
-          <hr />
-
           <div>
-            <p className="text-sm text-center">
+            <p className="text-xs text-center">
               Não possui uma conta? <Link to="/signup" className="text-primary">Registre-se</Link>
             </p>
           </div>
-          
+
         </div>
       </div>
     </div>
