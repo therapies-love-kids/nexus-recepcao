@@ -9,19 +9,6 @@ export default function Dashboard() {
   const [showInactive, setShowInactive] = useState(false);
   const [pacientes, setPacientes] = useState<any[]>([]);
 
-  const [nome, setNome] = useState("");
-  const [nomeCurto, setNomeCurto] = useState("");
-  const [sexo, setSexo] = useState("Masculino");
-  const [dataNascimento, setDataNascimento] = useState("");
-  const [certidaoNascimento, setCertidaoNascimento] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [convenio, setConvenio] = useState("");
-  const [numeroConvenio, setNumeroConvenio] = useState("");
-  const [cep, setCep] = useState("");
-  const [endereco, setEndereco] = useState("");
-  const [anotacoes, setAnotacoes] = useState("");
-  const [observacoes, setObservacoes] = useState("");
-
   const fetchPacientes = async () => {
     try {
       const data = await PacienteService.getAll();
@@ -40,34 +27,6 @@ export default function Dashboard() {
   const handleBotaoNovoPaciente = async () => {
     (document.getElementById('modal_novo_paciente') as HTMLDialogElement)?.showModal();
   };
-
-  const hangleBotaoAdicionarPaciente = async () => {
-    try {
-      const novoPaciente = {
-        unidade: 'ANA',
-        nome,
-        nome_curto: nomeCurto,
-        sexo,
-        data_nascimento: dataNascimento,
-        local_nascimento: '',
-        certidao_nascimento: certidaoNascimento,
-        cpf,
-        convenio,
-        numero_convenio: numeroConvenio,
-        cep,
-        endereco,
-        anotacoes,
-        observacoes
-      }
-      const response = await PacienteService.create(novoPaciente);
-      if (response) {
-        fetchPacientes();
-        alert('Paciente criado com sucesso!');
-      }
-    } catch (error) {
-      alert('Erro: ' + error);
-    }
-  }
 
   return (
     <div className="flex flex-row gap-4 h-screen bg-base-100 p-4 pr-8">
@@ -165,11 +124,8 @@ export default function Dashboard() {
         )}
 
       </div>
-      {/* </div> */}
 
       {/* MODAIS */}
-
-      {/* Modal de 'Novo Paciente' */}
 
       <NovoPacienteModal />
 
