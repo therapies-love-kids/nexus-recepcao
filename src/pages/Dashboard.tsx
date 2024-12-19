@@ -24,6 +24,11 @@ export default function Dashboard() {
     fetchPacientes();
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => fetchPacientes(), 30000);
+    return () => clearInterval(interval);
+  }, []);
+
   const handleBotaoNovoPaciente = async () => {
     (document.getElementById('modal_novo_paciente') as HTMLDialogElement)?.showModal();
   };
