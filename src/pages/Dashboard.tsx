@@ -72,6 +72,8 @@ export default function Dashboard() {
 
       </div>
 
+      {/* Divisor horizontal */}
+
       <div className="divider divider-horizontal mx-2" />
 
       {/* Parte principal  */}
