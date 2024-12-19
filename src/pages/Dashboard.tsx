@@ -94,7 +94,7 @@ export default function Dashboard() {
 
         {/* Tabela */}
 
-        {pacientes.length > 0 && (
+        {pacientes.length > 0 ? (
           <div className="overflow-x-hidden rounded-lg border-base-300 border-2">
             <table className="table table-zebra table-sm">
               <thead className="sticky top-0">
@@ -106,26 +106,32 @@ export default function Dashboard() {
                 </tr>
               </thead>
               <tbody>
-                {pacientes.filter(({ ativo }) => showInactive || ativo).map(({ id, nome, nome_curto: nomeCurto, codigo, ativo }) => (
-                  <tr key={id} className={ativo ? '' : 'opacity-60 italic'}>
-                    <td className="w-64">{nome}</td>
-                    <td>{nomeCurto}</td>
-                    <td>{codigo}</td>
-                    <td className="text-right">
-                      <div className="tooltip tooltip-left" data-tip="Imprimir documentos">
-                        <button
-                          className="btn btn-ghost btn-xs"
-                          onClick={() => (document.getElementById('modal_imprimir_documentos') as HTMLDialogElement)?.showModal()}
-                        >
-                          <FaPrint />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
+                {pacientes
+                  .filter(({ ativo }) => showInactive || ativo)
+                  .map(({ id, nome, nome_curto: nomeCurto, codigo, ativo }) => (
+                    <tr key={id} className={ativo ? '' : 'opacity-60 italic'}>
+                      <td className="w-64">{nome}</td>
+                      <td>{nomeCurto}</td>
+                      <td>{codigo}</td>
+                      <td className="text-right">
+                        <div className="tooltip tooltip-left" data-tip="Imprimir documentos">
+                          <button
+                            className="btn btn-ghost btn-xs"
+                            onClick={() => (document.getElementById('modal_imprimir_documentos') as HTMLDialogElement)?.showModal()}
+                          >
+                            <FaPrint />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
+        ) : isFetchingPacientes ? (
+          <span className="loading loading-spinner loading-lg mx-auto my-auto" />
+        ) : (
+          <div className="text-center text-lg font-bold py-4">Nenhum paciente encontrado.</div>
         )}
 
       </div>
