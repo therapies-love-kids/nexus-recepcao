@@ -36,6 +36,7 @@ export default function NovoPacienteModal() {
       const response = await PacienteService.create(novoPaciente);
       if (response) {
         alert('Paciente criado com sucesso!');
+        (document.getElementById('modal_novo_paciente') as HTMLDialogElement)?.close();
       }
     } catch (error) {
       alert('Erro: ' + error);
