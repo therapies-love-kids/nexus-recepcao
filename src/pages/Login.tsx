@@ -13,60 +13,60 @@ export default function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-primary">
-      <div className="card bg-base-100 size-11/12">
-        <div className="card-body flex justify-center items-center gap-6">
+    <div className="flex flex-row h-screen bg-base-100">
 
-          {/* Logo */}
+      <div className="w-full h-full flex flex-col items-center justify-center gap-6">
 
-          <img src="/svg/nexus-logo-dark.svg" alt="Nexus" className="w-36" />
+        {/* Logo */}
 
-          {/* FORMULÁRIO */}
+        <img src="/svg/nexus-logo-dark.svg" alt="Nexus" className="w-48" />
 
-          {/* E-mail */}
+        {/* FORMULÁRIO */}
 
-          <form className="flex flex-col gap-4 items-center w-1/4" onSubmit={handleSubmit}>
-            <label className="input input-bordered flex items-center gap-2 w-full text-sm">
-              <FaAt />
-              <input
-                type="email"
-                className="grow"
-                placeholder="E-mail"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              // required
-              />
-            </label>
+        {/* E-mail */}
 
-            {/* Senha */}
+        <form className="flex flex-col gap-4 items-center w-1/4" onSubmit={handleSubmit}>
+          <label className="input input-bordered flex items-center gap-2 w-full text-sm">
+            <FaAt />
+            <input
+              type="email"
+              className="grow"
+              placeholder="E-mail"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            // required
+            />
+          </label>
 
-            <label className="input input-bordered flex items-center gap-2 w-full text-sm">
-              <FaKey />
-              <input
-                type="password"
-                className="grow"
-                placeholder="Senha"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              // required
-              />
-            </label>
-            <button
-              type="submit"
-              className="btn btn-primary"
-            >
-              Entrar
-            </button>
-          </form>
+          {/* Senha */}
 
-          <div>
-            <p className="text-xs text-center">
-              Não possui uma conta? <Link to="/signup" className="text-primary">Registre-se</Link>
-            </p>
-          </div>
+          <label className="input input-bordered flex items-center gap-2 w-full text-sm">
+            <FaKey />
+            <input
+              type="password"
+              className="grow"
+              placeholder="Senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            // required
+            />
+          </label>
+          <button
+            type="submit"
+            className="btn btn-primary"
+          >
+            Entrar
+          </button>
+        </form>
 
+        <div>
+          <p className="text-xs text-center">
+            Não possui uma conta? <Link to="/signup" className="text-primary">Registre-se</Link>
+          </p>
         </div>
+
       </div>
+
     </div>
   )
 }
