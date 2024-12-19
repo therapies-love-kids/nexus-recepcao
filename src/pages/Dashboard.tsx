@@ -4,19 +4,28 @@ import { Link } from "react-router";
 import PacienteService from "../utils/PacienteService";
 import { FaArrowsRotate, FaPrint } from "react-icons/fa6";
 import NovoPacienteModal from "../components/NovoPacienteModal";
+import { AxiosError } from "axios";
 
 export default function Dashboard() {
   const [showInactive, setShowInactive] = useState(false);
   const [pacientes, setPacientes] = useState<any[]>([]);
+  const [isFetchingPacientes, setIsFetchingPacientes] = useState(true);
 
   const fetchPacientes = async () => {
+    setIsFetchingPacientes(true);
     try {
       const data = await PacienteService.getAll();
       if (data) {
         setPacientes(data);
       }
     } catch (error) {
-      // alert('Erro: ' + error);
+      if (error instanceof AxiosError && error.response?.status === 404) {
+        setPacientes([]);
+      } else {
+        alert(error);
+      }
+    } finally {
+      setIsFetchingPacientes(false);
     }
   };
 
@@ -33,14 +42,22 @@ export default function Dashboard() {
 
       {/* Menu lateral */}
 
-      <div className="flex flex-col gap-4 w-1/6">
-        <img src="/svg/nexus-logo-dark.svg" alt="Nexus" className="w-3/4 mx-auto mt-2" />
+      <div className="flex flex-col gap-4 w-[15%]">
+
+        {/* Logo */}
+
+        <img src="/svg/nexus-logo-dark.svg" alt="Nexus" className="w-2/3 mx-auto mt-2" />
+
+        {/* Telas */}
+
         <ul className="menu rounded-box w-full h-full">
-          <li><a className=" text-primary font-bold">Pacientes</a></li>
+          <li><a className="text-primary font-bold">Pacientes</a></li>
           <li><a className="">Representantes</a></li>
           <li><a className="">Vínculos</a></li>
           <li><a className="">Contratos</a></li>
         </ul>
+
+        {/* Perfil */}
 
         <div className="flex flex-row items-center w-full h-min p-2 text-sm">
           <div className="flex flex-col w-full">
@@ -52,9 +69,12 @@ export default function Dashboard() {
             Sair
           </Link>
         </div>
+
       </div>
 
       <div className="divider divider-horizontal mx-2" />
+
+      {/* Parte principal  */}
 
       <div className="flex flex-col gap-2 w-full">
 
@@ -72,10 +92,12 @@ export default function Dashboard() {
             <option>Código</option>
             {/* <option>CPF</option> */}
           </select>
+
           <label className="input input-bordered flex items-center gap-2 text-sm w-full input-sm">
             <FaSearch />
             <input type="text" placeholder="Procurar paciente" />
           </label>
+
           <div className="form-control">
             <label className="label cursor-pointer flex gap-2">
               <span className="label-text">Inativos</span>
@@ -87,9 +109,11 @@ export default function Dashboard() {
               />
             </label>
           </div>
+
           <button className="btn btn-primary btn-sm w-fit" onClick={handleBotaoNovoPaciente}>
             <span>Novo Paciente</span>
           </button>
+
         </div>
 
         {/* Tabela */}
