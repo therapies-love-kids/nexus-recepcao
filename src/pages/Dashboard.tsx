@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router";
 import PacienteService from "../utils/PacienteService";
-import { FaPrint } from "react-icons/fa6";
+import { FaArrowsRotate, FaPrint } from "react-icons/fa6";
 import NovoPacienteModal from "../components/NovoPacienteModal";
 
 export default function Dashboard() {
@@ -61,6 +61,11 @@ export default function Dashboard() {
         {/* Filtros */}
 
         <div className="flex flex-row gap-2 items-center">
+
+          <button className="btn btn-ghost btn-sm w-fit" onClick={fetchPacientes}>
+            <FaArrowsRotate />
+          </button>
+
           <select className="select select-bordered w-1/4 max-w-xs select-sm">
             <option>Nome</option>
             <option>Nome curto</option>
