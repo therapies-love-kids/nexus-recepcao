@@ -14,7 +14,6 @@ export default function NovoPacienteModal() {
   const [cep, setCep] = useState("");
   const [endereco, setEndereco] = useState("");
   const [anotacoes, setAnotacoes] = useState("");
-  const [observacoes, setObservacoes] = useState("");
 
   const hangleBotaoAdicionarPaciente = async () => {
     try {
@@ -32,7 +31,7 @@ export default function NovoPacienteModal() {
         cep,
         endereco,
         anotacoes,
-        observacoes
+        observacoes: '',
       }
       const response = await PacienteService.create(novoPaciente);
       if (response) {
@@ -159,23 +158,13 @@ export default function NovoPacienteModal() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col gap-1 w-full">
-            <p className="text-xs">Anotações</p>
-            <textarea
-              className="input input-bordered input-sm h-16 w-full resize-none"
-              value={anotacoes}
-              onChange={e => setAnotacoes(e.target.value)}
-            />
-          </div>
-          <div className="flex flex-col gap-1 w-full">
-            <p className="text-xs">Observações</p>
-            <textarea
-              className="input input-bordered input-sm h-16 w-full resize-none"
-              value={observacoes}
-              onChange={e => setObservacoes(e.target.value)}
-            />
-          </div>
+        <div className="flex flex-col gap-1 w-full">
+          <p className="text-xs">Anotações</p>
+          <textarea
+            className="input input-bordered input-sm h-24 w-full resize-none"
+            value={anotacoes}
+            onChange={e => setAnotacoes(e.target.value)}
+          />
         </div>
 
         <button className="btn btn-primary btn-sm" onClick={hangleBotaoAdicionarPaciente}>Adicionar paciente</button>
