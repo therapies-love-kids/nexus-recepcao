@@ -110,7 +110,7 @@ export default function Dashboard() {
                       <div className="tooltip tooltip-left" data-tip="Imprimir documentos">
                         <button
                           className="btn btn-ghost btn-xs"
-                          onClick={() => (document.getElementById('modal_imprimir_documento') as HTMLDialogElement)?.showModal()}
+                          onClick={() => (document.getElementById('modal_imprimir_documentos') as HTMLDialogElement)?.showModal()}
                         >
                           <FaPrint />
                         </button>
