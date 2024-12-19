@@ -19,7 +19,7 @@ export default function Login() {
 
         {/* Logo */}
 
-        <img src="/svg/nexus-logo-dark.svg" alt="Nexus" className="w-48" />
+        <img src="/svg/nexus-logo-dark.svg" alt="Nexus" className="w-64" />
 
         {/* FORMULÁRIO */}
 
